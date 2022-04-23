@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-    background: #ee6307;
+html, body{
+    background: #e74c3c;
     font-family: 'Poppins', sans-serif;
 }
 ::selection{
     color: #fff;
     /* background: #6665ee; */
     /* background: #ececf0; */
-    background: #ee6307;
+    /* background: #ee6307; */
 }
 .container{
     position: absolute;
