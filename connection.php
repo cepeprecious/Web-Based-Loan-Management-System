@@ -1,3 +1,3 @@
 <?php 
-$con = mysqli_connect('localhost', 'root', '', 'loan_db');
+$con = mysqli_connect('localhost', 'root', '', 'userform');
 ?>
