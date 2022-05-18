@@ -28,7 +28,6 @@ if($email != false && $password != false){
     <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-7eSns8llm-RMrRDsxHMEIf7RLOedtIl6ZakLhKnAVIi-rbZhzluH4rAXuSX_8wNGEWusUgzMC9IkFMaNASdxErVoYrB2Z8hTL1irKOppalmPhXlsdexC0odXcoEnuLC" charset="UTF-8"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -88,9 +87,9 @@ if($email != false && $password != false){
                   </a>
                 </li>
                   <li class="nav-item">
-                  <a href="typeOfLoans.php" class="nav-link">
+                  <a href="application.php" class="nav-link">
                       <i class="nav-icon fas fa-list-alt"></i>
-                      <p>Loan Application</p>
+                      <p>Apply For Loan</p>
                   </a>
                   </li>
                   </li>
@@ -107,7 +106,7 @@ if($email != false && $password != false){
                       </a>
                     </li> -->
                 <li class="nav-item">
-                    <a href="login-user.php" class="nav-link">
+                    <a href="../logout.php" class="nav-link">
                     <i class="nav-icon fas fa-power-off"></i>
                     <p>
                       Logout

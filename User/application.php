@@ -1,14 +1,13 @@
-<?php require_once "controllerUserData.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email != false && $password != false){
-    $sql = "SELECT * FROM usertable WHERE email = '$email'";
-    $run_Sql = mysqli_query($con, $sql);
-    $fetch_info = mysqli_fetch_assoc($run_Sql);
-}else{
-    header('Location: login-user.php');
+<?php
+
+@include '../connection.php';
+
+session_start();
+
+if(!isset($_SESSION['user_name'])){
+   header('location: ../index.php');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +25,8 @@ if($email != false && $password != false){
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- iCheck -->
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -38,6 +39,50 @@ if($email != false && $password != false){
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
+
+    <!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+    <script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+
+    <!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <!-- Inline CSS based on choices in "Settings" tab -->
+    <style>
+        .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+            font-family: Arial, Helvetica, sans-serif; 
+            color: black
+        }
+        .bootstrap-iso form button, .bootstrap-iso form button:hover {
+            color: white !important;
+        } 
+        .asteriskField {
+            color: red;
+        }
+    </style>
+
+    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    <!-- Include jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
+        })
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -80,7 +125,7 @@ if($email != false && $password != false){
                         <img src="../dist/img/avatar.png" class="img-square elevation-3"  alt="User Image">   
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?php echo $fetch_info['name']?></a>
+                        <a href="#" class="d-block"><?php echo $_SESSION['user_name'] ?></a>
                     </div>
                 </div>
 
@@ -97,7 +142,7 @@ if($email != false && $password != false){
                         <li class="nav-item menu-open">
                             <a href="application.php" class="nav-link active">
                                 <i class="nav-icon fas fa-list-alt"></i>
-                                <p>Loan Application</p>
+                                <p>Apply For Loan</p>
                             </a>
                         </li>
                         <!-- </li> -->
@@ -114,7 +159,7 @@ if($email != false && $password != false){
                     </a>
                 </li> -->
                         <li class="nav-item">
-                            <a href="login-user.php" class="nav-link">
+                            <a href="../logout.php" class="nav-link">
                                 <i class="nav-icon fas fa-power-off"></i>
                                 <p>Logout</p>
                             </a>
@@ -133,12 +178,12 @@ if($email != false && $password != false){
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Loan Application</h1>
+                            <h1 class="m-0">Loan Application Form</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Loan Application</li>
+                                <li class="breadcrumb-item active">Loan Application Form</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -154,57 +199,153 @@ if($email != false && $password != false){
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Student Loan</h3>
+                                <h3 class="card-title">Please fill up the following</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Control No.</label>
-                                            <input type="text" class="form-control" id="" placeholder="Enter Loan Control Number ..">
+                            <form action="../includes/loan_application.inc.php" method="POST">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Type of Valid ID<span class="asteriskField"> *</span></label>
+                                                <select class="form-control" name="validId" required>
+                                                    <option>Philippine Passport</option>
+                                                    <option>Driver's License</option>
+                                                    <option>SSS or UMID Card</option>
+                                                    <option>GSIS ID</option>
+                                                    <option>PRC ID</option>
+                                                    <option>National ID</option>
+                                                    <option>Tax Identification Number (TIN)</option>
+                                                    <option>Student ID</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">Add Image of ID</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Document ID Number<span class="asteriskField"> *</span></label>
+                                                <input type="number" min="10000" max="99999999999999" class="form-control" name="idNum" placeholder="Type your ID Number here..." required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Full Name (as per the document)<span class="asteriskField"> *</span></label>
+                                                <input type="text" class="form-control" name="fullname" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="date">Date of Birth<span class="asteriskField"> *</span></label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="date" name="bdate" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Gender<span class="asteriskField"> *</span></label>
+                                                <select name="gender" class="form-control" required>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Marital Status<span class="asteriskField"> *</span></label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="mstatus" value="Single" checked required>
+                                                    <label class="form-check-label">Single</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="mstatus" value="Married">
+                                                    <label class="form-check-label">Married</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="mstatus" value="Widowed">
+                                                    <label class="form-check-label">Widowed</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="mstatus" value="Other">
+                                                    <label class="form-check-label">Other</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>E-mail<span class="asteriskField"> *</span></label>
+                                                <input type="email" name="email" class="form-control" id="" placeholder="ex: myname@example.com" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Contact Number<span class="asteriskField"> *</span></label>
+                                                <input type="number" name="contact" class="form-control" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Home Address<span class="asteriskField"> *</span></label>
+                                                <input type="text" name="homeAddress" class="form-control" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Place of Work<span class="asteriskField"> *</span></label>
+                                                <input type="text" name="workAddress" class="form-control" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Years Employed<span class="asteriskField"> *</span></label>
+                                                <input type="number" name="yearsEmployed" class="form-control" id="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Monthly Net Income<span class="asteriskField"> *</span></label>
+                                                <input type="number" min="1000" max="99999999999999" name="monthlyIncome" class="form-control" id="" placeholder="in Philippine Peso" required>
+                                            </div>
+                                        </div>
+                                        <h3 class="mt-4 mb-4">Loan Details</h3>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Purpose<span class="asteriskField"> *</span></label>
+                                                <input type="text" name="purpose" class="form-control" id="" placeholder="Enter Purpose .." required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Requested Loan Amount<span class="asteriskField"> *</span></label>
+                                                <input type="number" min="1000" max="99999999999999" name="loanAmount" class="form-control" id="" placeholder="ex. 10000" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Terms (in months)<span class="asteriskField"> *</span></label>
+                                                <input type="number" name="terms" class="form-control" id="" placeholder="ex. 6" required> 
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Full Name</label>
-                                            <input type="text" class="form-control" id="" placeholder="Enter Full Name..">
-                                        </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary" name="application_submit">Submit</button>
+                                        <!-- <a href="typeOfLoans.php">
+                                            <button class="btn btn-primary float-right">Back</button>
+                                        </a> -->
+                                        <button class="btn btn-primary float-right" formaction="dashboard.php">Back</button>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Payment</label>
-                                            <input type="text" class="form-control" id="" placeholder="Enter Mode Payment ..">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Amount</label>
-                                            <input type="text" class="form-control" id="" placeholder="00.00">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Duration</label>
-                                            <input type="password" class="form-control" id="" placeholder="Enter Loan Duration ..">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Purpose</label>
-                                            <input type="text" class="form-control" id="" placeholder="Enter Purpose ..">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <!-- <a href="typeOfLoans.php">
-                                        <button class="btn btn-primary float-right">Back</button>
-                                    </a> -->
-                                    <button class="btn btn-primary float-right" formaction="typeOfLoans.php">Back</button>
                                 </div>
                             </form>
                         </div>

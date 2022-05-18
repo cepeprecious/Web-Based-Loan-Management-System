@@ -1,14 +1,13 @@
-<?php require_once "controllerUserData.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email != false && $password != false){
-    $sql = "SELECT * FROM usertable WHERE email = '$email'";
-    $run_Sql = mysqli_query($con, $sql);
-    $fetch_info = mysqli_fetch_assoc($run_Sql);
-}else{
-    header('Location: login-user.php');
+<?php
+
+@include 'connection.php';
+
+session_start();
+
+if(!isset($_SESSION['user_name'])){
+   header('location: ../index.php');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +25,8 @@ if($email != false && $password != false){
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- iCheck -->
   <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -85,7 +86,7 @@ if($email != false && $password != false){
             <div class="image">
         <img src="../dist/img/avatar.png" class="img-square elevation-3"  alt="User Image">   </div>
             <div class="info">
-            <a href="#" class="d-block"><?php echo $fetch_info['name']?></a>
+            <a href="#" class="d-block"><?php echo $_SESSION['user_name'] ?></a>
             </div>
 
         </div>
@@ -104,9 +105,9 @@ if($email != false && $password != false){
                 </a>
             </li>
                 <li class="nav-item">
-                <a href="typeOfLoans.php" class="nav-link">
+                <a href="application.php" class="nav-link">
                     <i class="nav-icon fas fa-list-alt"></i>
-                    <p>Loan Application</p>
+                    <p>Apply For Loan</p>
                 </a>
                 </li>
                 </li>
@@ -123,7 +124,7 @@ if($email != false && $password != false){
                     </a>
                 </li> -->
             <li class="nav-item">
-                <a href="login-user.php" class="nav-link">
+                <a href="../logout.php" class="nav-link">
                 <i class="nav-icon fas fa-power-off"></i>
                 <p>
                     Logout
