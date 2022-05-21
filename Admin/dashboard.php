@@ -167,27 +167,32 @@ if(!isset($_SESSION['admin_name'])){
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>0<sup style="font-size: 20px"></sup></h3>
+                <?php 
+                  $approved = $con->query("SELECT status FROM loanapplication WHERE status = 'APPROVED'")->num_rows;
+                ?>
+                <h3><?php echo $approved; ?><sup style="font-size: 20px"></sup></h3>
                 <p>Total Loan Approved</p>
               </div>
               <div class="icon">
                 <i class="fa fa-check"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="application.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>0<sup style="font-size: 20px"></sup></h3>
-
+                <?php 
+                  $total = $con->query("SELECT * FROM loanapplication")->num_rows;
+                ?>
+                <h3><?php echo $total; ?><sup style="font-size: 20px"></sup></h3>
                 <p>Total Loan Application</p>
               </div>
               <div class="icon">
                 <i class="fa fa-list-alt"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="application.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>
