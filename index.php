@@ -27,8 +27,17 @@ if(isset($_POST['submit'])){
 
       }elseif($row['user_type'] == 'user'){
 
-         $_SESSION['user_name'] = $row['name'];
-         header('location: User/dashboard.php');
+         if ($_SESSION['user_name'] = $row['name']) {
+            header('location: User/dashboard.php');
+            exit();
+         }
+         elseif ($_SESSION['id'] = $row['id']) {
+            header('location: User/viewloan.php');
+            exit();
+         }
+         else {
+            
+         }
 
       }
    }else{

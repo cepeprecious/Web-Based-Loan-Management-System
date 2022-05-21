@@ -206,6 +206,12 @@ if(!isset($_SESSION['user_name'])){
                             <form action="../includes/loan_application.inc.php" method="POST">
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="form-group">
+                                            <input id="status" type="hidden" name="status" value="PENDING">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="username" type="hidden" name="username" value="<?php echo $_SESSION['user_name'] ?>">
+                                        </div>
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Type of Valid ID<span class="asteriskField"> *</span></label>
@@ -319,10 +325,22 @@ if(!isset($_SESSION['user_name'])){
                                             </div>
                                         </div>
                                         <h3 class="mt-4 mb-4">Loan Details</h3>
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <div class="form-group">
                                                 <label>Purpose<span class="asteriskField"> *</span></label>
                                                 <input type="text" name="purpose" class="form-control" id="" placeholder="Enter Purpose .." required>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Purpose<span class="asteriskField"> *</span></label>
+                                                <select name="purpose" class="form-control" required>
+                                                    <option>Personal Loan</option>
+                                                    <option>Home Loan</option>
+                                                    <option>Education Loan</option>
+                                                    <option>Business Loan</option>
+                                                    <option>Car Loan</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-6">

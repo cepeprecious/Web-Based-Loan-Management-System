@@ -1,6 +1,47 @@
-CREATE TABLE `usertable` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `loanapplication` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `validId` varchar(255) NOT NULL,
+  `idNum` varchar(50) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `bdate` date NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `mstatus` varchar(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact` varchar(50) NOT NULL,
+  `homeAddress` varchar(255) NOT NULL,
+  `workAddress` varchar(255) NOT NULL,
+  `yearsEmployed` int(11) NOT NULL,
+  `monthlyIncome` int(11) NOT NULL,
+  `purpose` varchar(255) NOT NULL,
+  `loanAmount` int(11) NOT NULL,
+  `terms` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idNum` (`idNum`)
+)
+
+INSERT INTO `loanapplication` 
+VALUES 
+(1,'SSS or UMID Card','232132123','Precious Enica Cepe','2009-04-30','Female','on','preciouscepe15@gmail.com','2312312','Boulevard, Davao City','Boulevard, Davao City',3,20000,'School Tuition',200000,12,'APPROVED'),
+(2,'Student ID','59821241','Precious Enica l. Cepe','2009-04-30','Female','on','enica.cepe@hcdc.edu.ph','2147483647','Boulevard, Davao City','Boulevard, Davao City',1,10000,'Personal Loan',30000,12,'REJECTED'),
+(3,'Student ID','59821240','Yamada Ryosuke','1993-05-09','Male','on','test@mail.com','2147483647','Boulevard, Davao City','Boulevard, Davao City',3,30000,'Personal Loan',20000,12,'PENDING'),
+(4,'Student ID','45454545','Apollo Miguel Cepe','2007-05-13','Male','Single','test@test.com','2147483647','Boulevard, Davao City','Boulevard, Davao City',3,30000,'School Tuition',20000,12,'APPROVED'),
+(5,'Philippine Passport','3423423423','test1','2022-05-20','Male','Single','test@test.com','234234234','Boulevard, Davao City','Boulevard, Davao City',1,10000,'Home Loan',20000,12,'PENDING'),
+(6,'GSIS ID','32423232','test','2022-05-25','Male','Widowed','precious.cepe@gmail.com','231231231','Boulevard, Davao City','Boulevard, Davao City',3,30000,'Education Loan',20000,12,'APPROVED');
+
+
+CREATE TABLE `users` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `user_type` varchar(255) NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`id`)
 )
+
+INSERT INTO `users` 
+VALUES 
+(1,'Precious Cepe','preciouscepe15@gmail.com','2306e617d2dc0397c874227acf0c6b5d','user'),
+(2,'Yamada Ryosuke','test@mail.com','e860d28023195bee51c111ee703deef9','admin'),
+(3,'admin','admin@test.com','21232f297a57a5a743894a0e4a801fc3','admin'),
+(4,'user','user@test.com','ee11cbb19052e40b07aac0ca060c23ee','user');

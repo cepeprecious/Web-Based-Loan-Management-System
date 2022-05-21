@@ -81,7 +81,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="slider-captions">
                                 <!-- slider-captions -->
-                                <h1 class="slider-title"> Lowest Car Loan Rate <strong class="text-highlight">9.60%</strong> </h1>
+                                <h1 class="slider-title"> Lowest Car Loan Rate <strong class="text-highlight"></strong> </h1>
                                 <p class="slider-text d-none d-xl-block d-lg-block d-md-block"> We provide an excellent service Loan company. Lorem ipsum simple dummy content goes here.</p>
                                 <a href="#" class="btn btn-default ">Check Eligiblity</a> </div>
                             <!-- /.slider-captions -->
@@ -97,7 +97,7 @@
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="slider-captions">
                                 <!-- slider-captions -->
-                                <h1 class="slider-title">Student Loans with Greate Rates <strong class="text-highlight">11.10%</strong></h1>
+                                <h1 class="slider-title">Student Loans with Greate Rates <strong class="text-highlight"></strong></h1>
                                 <p class="slider-text d-none d-xl-block d-lg-block d-md-block">We provide an excellent service for all types of loans in
                                     <br> ahmedabad and offer service, advice and direction.</p>
                                 <a href="#" class="btn btn-default">View Products</a> </div>
@@ -156,10 +156,10 @@
                             <div class="service-content">
                                 <h2 class="service-title"><a href="#" class="title">Personal Loan</a></h2>
                             </div>
-                            <div class="service-rate-block">
+                            <!-- <div class="service-rate-block">
                                 <h3 class="product-rate">11.49%</h3>
                                 <p class="rate-text">Rate of interest: </p>
-                            </div>
+                            </div> -->
                             <a href="#" class="btn btn-secondary btn-block">Apply now</a>
                         </div>
                     </div>
@@ -171,10 +171,10 @@
                             <div class="service-content">
                                 <h2 class="service-title"><a href="#" class="title">Home Loan</a></h2>
                             </div>
-                            <div class="service-rate-block">
+                            <!-- <div class="service-rate-block">
                                 <h3 class="product-rate">8.35%</h3>
                                 <p class="rate-text">Rate of interest: </p>
-                            </div>
+                            </div> -->
                             <a href="#" class="btn btn-secondary btn-block">Apply now</a>
                         </div>
                     </div>
@@ -186,10 +186,10 @@
                             <div class="service-content">
                                 <h2 class="service-title"><a href="#" class="title">Car Loan</a></h2>
                             </div>
-                            <div class="service-rate-block">
+                            <!-- <div class="service-rate-block">
                                 <h3 class="product-rate">12.75%</h3>
                                 <p class="rate-text">Rate of interest: </p>
-                            </div>
+                            </div> -->
                             <a href="#" class="btn btn-secondary btn-block">Apply now</a></div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
@@ -200,10 +200,10 @@
                             <div class="service-content">
                                 <h2 class="service-title"><a href="#" class="title">Business Loan</a></h2>
                             </div>
-                            <div class="service-rate-block">
+                            <!-- <div class="service-rate-block">
                                 <h3 class="product-rate">16.00</h3>
                                 <p class="rate-text">Rate of interest: </p>
-                            </div>
+                            </div> -->
                             <a href="#" class="btn btn-secondary btn-block">Apply now</a> </div>
                     </div>
                 </div>

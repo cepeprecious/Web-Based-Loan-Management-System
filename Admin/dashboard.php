@@ -1,6 +1,7 @@
 <?php
 
-@include 'connection.php';
+// @include 'connection.php';
+@include '../connection.php';
 
 session_start();
 
@@ -104,14 +105,6 @@ if(!isset($_SESSION['admin_name'])){
             </a>
           </li>
           <li class="nav-item">
-            <a href="smslog.php" class="nav-link">
-              <i class="nav-icon fas fa-file-signature"></i>
-              <p>
-               Sms Logs
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -124,32 +117,10 @@ if(!isset($_SESSION['admin_name'])){
               <li class="nav-item">
                 <a href="application.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Application</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="payment.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Payment</p>
+                  <p>View Applications</p>
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="usermanagement.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-               User Management
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="usergroup.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                User Group
-              </p>
-            </a>
           </li>
           <li class="nav-item">
             <a href="../logout.php" class="nav-link">
@@ -194,25 +165,9 @@ if(!isset($_SESSION['admin_name'])){
         <div class="row">
           <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>0</h3>
-
-                <p>Total Members</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-users"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>0<sup style="font-size: 20px"></sup></h3>
-
                 <p>Total Loan Approved</p>
               </div>
               <div class="icon">
