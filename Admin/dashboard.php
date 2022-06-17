@@ -195,6 +195,24 @@ if(!isset($_SESSION['admin_name'])){
               <a href="application.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+              <?php 
+                  $result = mysqli_query($con, 'SELECT SUM(loanAmount) As total FROM loanapplication'); 
+                  $row = mysqli_fetch_assoc($result); 
+                  $sum = $row['total'];
+                ?>
+                <h3><?php echo $sum; ?><sup style="font-size: 20px"></sup></h3>
+                <p>Total Loan Request Amount</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-list-alt"></i>
+              </div>
+              <a href="application.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
         <!-- Main row -->

@@ -352,7 +352,14 @@ if(!isset($_SESSION['user_name'])){
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label>Terms (in months)<span class="asteriskField"> *</span></label>
-                                                <input type="number" name="terms" class="form-control" id="" placeholder="ex. 6" required> 
+                                                <!-- <input type="number" name="terms" class="form-control" id="" placeholder="ex. 6" required>  -->
+                                                <select name="terms" class="form-control" required>
+                                                    <option>1 months</option>
+                                                    <option>3 months</option>
+                                                    <option>6 months</option>
+                                                    <option>9 months</option>
+                                                    <option>12 months</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

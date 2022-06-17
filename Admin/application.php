@@ -182,7 +182,10 @@ if(!isset($_SESSION['admin_name'])){
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".
                                                                     "<td style='margin-top: 8px; margin-left: 12px;' class='badge badge-pill badge-secondary'>".$row['status']."</td>".
-                                                                    "<td><a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> <button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></td>".
+                                                                    "<td>
+                                                                        <a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> 
+                                                                        <a href='delete_process.php?view=true&id=".$row['id']."'><button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></a>
+                                                                    </td>".
                                                                     "</tr>"; 
                                                                 }
                                                                 else if ($row['status'] == 'APPROVED'){
@@ -196,7 +199,10 @@ if(!isset($_SESSION['admin_name'])){
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".
                                                                     "<td style='margin-top: 8px; margin-left: 9px;' class='badge badge-pill badge-success'>".$row['status']."</td>".
-                                                                    "<td><a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> <button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></td>".
+                                                                    "<td>
+                                                                        <a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> 
+                                                                        <a href='delete_process.php?view=true&id=".$row['id']."'><button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></a>
+                                                                    </td>".
                                                                     "</tr>"; 
                                                                 }
                                                                 else {
@@ -210,7 +216,10 @@ if(!isset($_SESSION['admin_name'])){
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".
                                                                     "<td style='margin-top: 8px; margin-left: 9px;' class='badge badge-pill badge-danger'>".$row['status']."</td>".
-                                                                    "<td><a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> <button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></td>".
+                                                                    "<td>
+                                                                        <a href='view_details.php?view=true&id=".$row['id']."'><button class='btn btn-primary btn-xs view_loan'><img src='https://img.icons8.com/ios-glyphs/24/ffffff/visible--v1.png'/></button></a> 
+                                                                        <a href='delete_process.php?view=true&id=".$row['id']."'><button class='btn btn-danger btn-xs view_loan'><img src='https://img.icons8.com/material/24/ffffff/filled-trash.png'/></button></a>
+                                                                    </td>".
                                                                     "</tr>"; 
                                                                 }
                                                             }

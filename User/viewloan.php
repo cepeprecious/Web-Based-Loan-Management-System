@@ -204,19 +204,19 @@ if(!isset($_SESSION['user_name'])){
                                         <table class='table table-hover table-striped table-bordered'>
                                             <colgroup>
                                                 <col width="5%">
-                                                <col width="20%">
+                                                <!-- <col width="20%"> -->
                                                 <col width="15%">
                                                 <col width="20%">
-                                                <col width="10%">
+                                                <col width="15%">
                                                 <col width="10%">
                                             </colgroup>
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Name</th>
+                                                    <!-- <th>Name (from Valid ID)</th> -->
                                                     <th>Purpose</th>
                                                     <th>Loan Amount</th>
-                                                    <th>Terms</th>
+                                                    <th>Terms (in months)</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
@@ -233,7 +233,7 @@ if(!isset($_SESSION['user_name'])){
                                                                     $_SESSION['view'] = 'YES';
                                                                     echo "<tr>".
                                                                     "<td>".$row['id']."</td>".
-                                                                    "<td>".$row['fullname']."</td>".
+                                                                    // "<td>".$row['fullname']."</td>".
                                                                     "<td>".$row['purpose']."</td>".
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".
@@ -245,7 +245,7 @@ if(!isset($_SESSION['user_name'])){
                                                                     $_SESSION['view'] = 'YES';
                                                                     echo "<tr>".
                                                                     "<td>".$row['id']."</td>".
-                                                                    "<td>".$row['fullname']."</td>".
+                                                                    // "<td>".$row['fullname']."</td>".
                                                                     "<td>".$row['purpose']."</td>".
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".
@@ -257,7 +257,7 @@ if(!isset($_SESSION['user_name'])){
                                                                     $_SESSION['view'] = 'YES';
                                                                     echo "<tr>".
                                                                     "<td>".$row['id']."</td>".
-                                                                    "<td>".$row['fullname']."</td>".
+                                                                    // "<td>".$row['fullname']."</td>".
                                                                     "<td>".$row['purpose']."</td>".
                                                                     "<td>".$row['loanAmount']."</td>".
                                                                     "<td>".$row['terms']."</td>".

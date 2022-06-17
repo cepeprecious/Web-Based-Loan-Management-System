@@ -1,6 +1,7 @@
 <?php
 
-@include 'connection.php';
+// @include 'connection.php';
+@include '../connection.php';
 
 session_start();
 
@@ -170,28 +171,36 @@ if(!isset($_SESSION['user_name'])){
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>0<sup style="font-size: 20px"></sup></h3>
+                <?php 
+                  $total = $con->query("SELECT * FROM loanapplication")->num_rows;
+                ?>
+                <h3><?php echo $total; ?><sup style="font-size: 20px"></sup></h3>
 
                 <p>Total Loan</p>
               </div>
               <div class="icon">
                 <i class="fa fa-list-alt"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="viewloan.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-6 col-6">
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>0<sup style="font-size: 20px"></sup></h3>
+                <?php 
+                  $result = mysqli_query($con, 'SELECT SUM(loanAmount) As total FROM loanapplication WHERE status = "APPROVED"'); 
+                  $row = mysqli_fetch_assoc($result); 
+                  $sum = $row['total'];
+                ?>
+                <h3><?php echo $sum; ?><sup style="font-size: 20px"></sup></h3>
 
                 <p>Balance</p>
               </div>
               <div class="icon">
                 <i class="fa fa-balance-scale"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="viewloan.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         </div>
